@@ -1,8 +1,20 @@
 class Calculator{
+    $previousPreview
+    $currentPreview
 
+    constructor($previousPreview, $currentPreview ){
+        this.$previousPreview = $previousPreview
+        this.$currentPreview = $currentPreview
+    }
+
+    onPressNumber(number) {
+        // TODO: 벨리데이션 
+        this.$currentPreview.textContent += number
+    }
 }
 
-const cal = new Calculator();
+
+
 // 값 표시
 const $previousPreview = document.querySelector("[data-previous-preview]");
 const $currentPreview = document.querySelector("[data-previous-current]");
@@ -19,12 +31,16 @@ const $operations = document.querySelectorAll('[data-btn-operation]')
 
 $numbers.forEach(($number)=>{
     $number.addEventListener("click", (e)=>{
-        console.log(e.target.textContent)
+        cal.onPressNumber(e.target.textContent);
     })
 })
 
 $operations.forEach(($operation)=>{
     $operation.addEventListener("click", (e)=>{
-        console.log(e.target.textContent)
+        cal.onPressNumber(cal.e.target.textContent);
     })
 })
+
+
+
+const cal = new Calculator($previousPreview,$currentPreview);
