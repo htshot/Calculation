@@ -11,6 +11,11 @@ class Calculator{
         // TODO: 벨리데이션 
         this.$currentPreview.textContent += number
     }
+
+    onPressOperation(operation){
+        this.$previousPreview.textContent = `${this.$currentPreview.textContent} ${operation}`
+        this.$currentPreview.textContent  = ''
+    }
 }
 
 
@@ -24,6 +29,7 @@ const $plus= document.querySelector("[data-btn-plus]");
 const $minus = document.querySelector("[data-btn-minus]");
 const $divide = document.querySelector("[data-btn-divide]");
 const $multiply = document.querySelector("[data-btn-multiply]");
+const $equal = document.querySelector("[data-btn-equal]");
 
 // 숫자, 연산
 const $numbers = document.querySelectorAll('[data-btn-Number]')
@@ -37,7 +43,26 @@ $numbers.forEach(($number)=>{
 
 $operations.forEach(($operation)=>{
     $operation.addEventListener("click", (e)=>{
-        cal.onPressNumber(cal.e.target.textContent);
+        switch ($operation) {
+            case $plus:
+                cal.onPressOperation("+")
+                break;
+            case $minus:
+                cal.onPressOperation("-")
+                break;
+            case $multiply:
+                cal.onPressOperation("*")
+                break;
+            case $divide:
+                cal.onPressOperation("÷")
+                break;
+            case $equal:
+                //
+                break;
+            default:
+                break;
+        }
+        // cal.onPressOperation(e.target.textContent);
     })
 })
 
